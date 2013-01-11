@@ -27,9 +27,9 @@ Vagrant::Config.run do |config|
 
   config.vm.network :hostonly, "42.42.42.42"
 
-  config.vm.share_folder "static-files", "/var/toto/static", "../static"
-  config.vm.share_folder "service-files", "/var/toto/service", "../service"
-  config.vm.share_folder "nginx-conf", "/var/toto/nginx-conf", "../nginx-conf"
+  config.vm.share_folder "static-files", "/var/toto/static", "static"
+  config.vm.share_folder "service-files", "/var/toto/service", "service"
+  config.vm.share_folder "nginx-conf", "/var/toto/nginx-conf", "nginx-conf"
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {:mysql => {:server_debian_password => 'admin', :server_root_password => 'admin', :server_repl_password => 'admin'}}
