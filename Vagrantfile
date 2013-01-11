@@ -1,7 +1,8 @@
 class TotoCommand < Vagrant::Command::Base
   def execute
-    #pipe to /dev/null to prevent hang after fork for --start
-    @env.primary_vm.channel.execute('/var/toto/service/totoserver.py ' + ARGV[1] + ' > /dev/null') do |s, d|
+    args = ARGV[1..-1].join(' ')
+    command = args.index('start') ? "/var/toto/service/totoserver.py #{args} > /dev/null && echo 'Ran #{ARGV.join(' ')}'" : "/var/toto/service/totoserver.py #{args}"
+    @env.primary_vm.channel.execute(command) do |s, d|
       puts d
     end
   end
