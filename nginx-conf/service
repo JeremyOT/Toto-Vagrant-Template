@@ -1,0 +1,24 @@
+upstream backend_servers {
+  server 127.0.0.1:8888;
+}
+
+server {
+  listen 80;
+  
+    root /var/toto/static;
+
+    location /service {
+      proxy_pass_header Server;
+      proxy_set_header Host $http_host;
+      proxy_redirect off;
+      proxy_set_header x_real_ip $remote_addr;
+      proxy_set_header x_scheme $scheme;
+      proxy_pass http://backend_servers;
+      expires -1; 
+    }
+
+    location / {
+      expires -1;
+      index index.html;
+    }
+}
