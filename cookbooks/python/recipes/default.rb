@@ -18,10 +18,6 @@ execute 'pip-install' do
   command 'easy_install pip'
 end
 
-execute 'pip-distribute' do
-  command 'pip install distribute --upgrade'
-end
-
-execute 'pip' do
-  command 'pip install toto pbkdf2 MySQL-python'
+execute 'run-script' do
+  command '/var/toto/setup-files/python.sh'
 end
