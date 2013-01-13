@@ -1,7 +1,7 @@
 class TotoCommand < Vagrant::Command::Base
   def execute
     args = ARGV[1..-1].join(' ')
-    command = args.index('start') ? "/var/toto/service/totoserver.py #{args} > /dev/null && echo 'Ran #{ARGV.join(' ')}'" : "/var/toto/service/totoserver.py #{args}"
+    command = args.index('start') ? "/var/toto/service/services.sh #{args} > /dev/null && echo 'Ran #{ARGV.join(' ')}'" : "/var/toto/service/services.sh #{args}"
     @env.primary_vm.channel.execute(command) do |s, d|
       puts d
     end
@@ -31,6 +31,7 @@ Vagrant::Config.run do |config|
   config.vm.share_folder "static-files", "/var/toto/static", "static"
   config.vm.share_folder "service-files", "/var/toto/service", "service"
   config.vm.share_folder "nginx-conf", "/var/toto/nginx-conf", "nginx-conf"
+  config.vm.share_folder "setup-files", "/var/toto/setup-files", "setup-files"
 
   config.vm.provision :chef_solo do |chef|
     chef.json = {:mysql => {:server_debian_password => 'admin', :server_root_password => 'admin', :server_repl_password => 'admin'}}

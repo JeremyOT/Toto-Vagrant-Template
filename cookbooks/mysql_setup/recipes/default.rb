@@ -1,3 +1,3 @@
 execute 'create-database' do
-  command 'echo "create database if not exists toto;" | mysql -u root --password=admin'
+  command 'mysql -u root --password=admin < /var/toto/setup-files/setup.sql'
 end
