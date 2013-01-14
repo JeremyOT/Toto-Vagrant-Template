@@ -10,10 +10,6 @@ package 'python-dev' do
   action :install
 end
 
-package 'libmysqlclient18' do
-  action :install
-end
-
 execute 'pip-install' do
   command 'easy_install pip'
 end

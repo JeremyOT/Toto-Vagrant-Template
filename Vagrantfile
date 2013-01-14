@@ -40,6 +40,8 @@ Vagrant::Config.run do |config|
     chef.add_recipe "mysql::client"
     chef.add_recipe "mysql_setup"
     chef.add_recipe "python"
+    chef.add_recipe "toto"
+    chef.add_recipe "post_setup"
   end
 
 end
