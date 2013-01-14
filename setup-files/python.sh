@@ -4,4 +4,4 @@
 #specify any packages you would like to install.
 
 pip install distribute --upgrade
-ip install toto pbkdf2 MySQL-python
+pip install toto pbkdf2 MySQL-python
