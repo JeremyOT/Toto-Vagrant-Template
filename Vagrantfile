@@ -2,7 +2,7 @@ class TotoCommand < Vagrant::Command::Base
   def execute
     args = ARGV[1..-1].join(' ')
     command = args.index('start') ? "/var/toto/service/services.sh #{args} > /dev/null && echo 'Ran #{ARGV.join(' ')}'" : "/var/toto/service/services.sh #{args}"
-    @env.primary_vm.channel.execute(command) do |s, d|
+    @env.primary_vm.channel.sudo(command) do |s, d|
       puts d
     end
   end
