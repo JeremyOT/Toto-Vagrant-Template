@@ -23,7 +23,7 @@ Commands
 
 There are a few special commands available to help you out:
 
-- `vagrant toto <command>` - Passes `<command>` to your [Toto][toto] service so you can easily `--restart` after you make changes (or run your service with other options).
+- `vagrant toto <command>` - Passes `<command>` to your [Toto][toto] service so you can easily `--restart` after you make changes (or run your service with other options). This command actually runs `service/services.sh`, which acts as a proxy to your [Toto][toto] service and makes it easy to manage multiple services simultaneously.
 - `vagrant nginx <signal>` - Calls `nginx -s <signal>` in the VM. In the special case where `<signal>` is `start`, this will call `nginx`.
 
 Additional Setup
